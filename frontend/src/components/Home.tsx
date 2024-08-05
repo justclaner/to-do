@@ -31,12 +31,13 @@ const Home = () => {
             <h1 className="text-center text-3xl my-8">To-do App</h1>
             {/*Insert icon links */}
             </div>
-            {loading ? <Loading /> : <div className='flex flex-wrap justify-start border border-black rounded-lg w-full'>
+            {loading ? <Loading /> : <div className='flex flex-wrap justify-evenly border border-black rounded-lg w-full'>
                 {projects.map(project=>
-                    <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl max-w-[400px]' key={project._id}>
+                    <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl w-[30%] min-w-[300px] max-w-[600px]' key={project._id}>
                         <div className="flex flex-wrap items-center justify-start">
                             <h1 className='text-2xl'>{project.title}</h1>
-                            <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Edit Project Title</button>
+                            <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Edit Title</button>
+                            <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Delete Project</button>
                         </div>
                         
                         {tasks.map(task=>{if(task.projectId == project._id) {
