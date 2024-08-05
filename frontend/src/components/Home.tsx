@@ -33,14 +33,14 @@ const Home = () => {
             </div>
             {loading ? <Loading /> : <div className='flex flex-wrap justify-start border border-black rounded-lg w-full'>
                 {projects.map(project=>
-                    <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl'>
+                    <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl max-w-[400px]' key={project._id}>
                         <div className="flex flex-wrap items-center justify-start">
                             <h1 className='text-2xl'>{project.title}</h1>
                             <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Edit Project Title</button>
                         </div>
                         
                         {tasks.map(task=>{if(task.projectId == project._id) {
-                            return <div className='border-2 border-black px-4 py-2 my-4 rounded-lg'> 
+                            return <div className='border-2 border-black px-4 py-2 my-4 rounded-lg' key={task._id}> 
                                 <h2 className='text-xl'>{`Task: ${task.title}`}</h2>
                                 <h3 className="text-lg">{task.description}</h3>
                                 <h3 className="text-lg">{task.date}</h3>
