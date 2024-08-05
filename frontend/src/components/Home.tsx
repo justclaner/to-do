@@ -48,7 +48,6 @@ const Home = () => {
                                 <button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Edit Task</button>
                                 <button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Delete Task</button>
                                 </div>
-                                
                                 </div>
                         }}
                         )}
@@ -59,7 +58,7 @@ const Home = () => {
                 )}
                
                 </div> } 
-                <button className='border-2 border-black p-1 w-[20%] mt-6 mb-2 rounded-lg hover:shadow-xl'>Add Project</button>
+                <Link to='/createProject'><button className='border-2 border-black p-1 w-[20%] mt-6 mb-2 rounded-lg hover:shadow-xl'>Add Project</button></Link>
     </div>
   )
 }
