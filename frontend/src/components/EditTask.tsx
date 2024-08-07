@@ -84,7 +84,7 @@ const EditTask = () => {
             {/* <label className='text-xl text-gray-500'>Project Id:</label>
             <input type="text" className="border-2 border-gray-500 w-full px-4 py-2" value={projectId}/> */}
         </div>
-        <button className="border-2 border-black mx-auto mb-2 px-2 py-1 rounded-lg" onClick={postTask}>Submit</button>
+        <button className="border-2 border-black mx-auto mb-2 px-2 py-1 rounded-lg" onClick={postTask}>Edit Task</button>
         </div>
         {loading ? <Loading /> : ""}
     </div>

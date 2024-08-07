@@ -50,7 +50,7 @@ const EditProject = () => {
             <label className='text-xl text-gray-500'>Title:</label>
             <input type="text" className="border-2 border-gray-500 w-full px-4 py-2" defaultValue={title} onChange={e=>setTitle(e.target.value)}/>
         </div>
-        <button className="border-2 border-black mx-auto px-2 py-1 rounded-lg" onClick={postProject}>Submit</button>
+        <button className="border-2 border-black mx-auto px-2 py-1 rounded-lg" onClick={postProject}>Edit Project</button>
         </div>
         {loading ? <Loading /> : ""}
     </div>
