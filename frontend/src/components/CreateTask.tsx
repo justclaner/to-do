@@ -38,7 +38,7 @@ const CreateTask = () => {
         date: date,
         projectId: projectId
       }
-      await axios.post("http://localhost:5000/tasks/createTask",data);
+      await axios.post(`${url}createTask`,data);
       setLoading(false);
       navigate('/');
     } catch(e) {

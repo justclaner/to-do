@@ -10,6 +10,7 @@ const CreateProject = () => {
     const [title, setTitle] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
     const postProject = async () => {
         try {
             const data = {title:title};

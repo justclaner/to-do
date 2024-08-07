@@ -37,7 +37,7 @@ const Home = () => {
                     <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl w-[30%] min-w-[300px] max-w-[600px]' key={project._id}>
                         <div className="flex flex-wrap items-center justify-start">
                             <h1 className='text-2xl'>{project.title}</h1>
-                            <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Edit Title</button>
+                            <Link to={`/putProject/${project._id}`}><button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Edit Title</button></Link>
                             <Link to={`/deleteProject/${project._id}`}><button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Delete Project</button></Link>
                         </div>
                         
@@ -47,7 +47,7 @@ const Home = () => {
                                 <h3 className="text-lg">{task.description}</h3>
                                 <h3 className="text-lg font-semibold">{task.date}</h3>
                                 <div className="flex justify-evenly w-full mt-6 mb-2">
-                                <button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Edit Task</button>
+                                <Link to={`/putTask/${project._id}/${task._id}`}><button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Edit Task</button></Link>
                                 <Link to={`/deleteTask/${task._id}`}><button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Delete Task</button></Link>
                                 </div>
                                 </div>
