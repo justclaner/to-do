@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios';
 import Loading from './Loading.tsx';
-import {MdOutlineAddBox,MdOutlineDelete} from 'react-icons/md';
+//import {MdOutlineAddBox,MdOutlineDelete} from 'react-icons/md';
 import {Link} from 'react-router-dom';
 import {url} from '../config.ts';
 
@@ -30,7 +30,6 @@ const Home = () => {
 
             <div className="flex justify-between items-center">
             <h1 className="text-center text-3xl my-8">To-do App</h1>
-            {/*Insert icon links */}
             </div>
             {loading ? <Loading /> : <div className='flex flex-wrap justify-evenly border border-black rounded-lg w-full'>
                 {projects.map(project=>
@@ -53,8 +52,6 @@ const Home = () => {
                                 </div>
                         }}
                         )}
-                        {/* add Link component */}
-                        {/* <MdOutlineAddBox className='text-sky-800 text-4xl' /> */}
                         <Link to={`/createTask/${project._id}`}><button className='border-2 border-black p-1 w-full mt-6 mb-2 rounded-lg hover:shadow-xl'>Add Task</button></Link>
                         </div>
                 )}

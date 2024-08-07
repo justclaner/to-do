@@ -7,8 +7,8 @@ import DeleteProject from './components/DeleteProject.tsx';
 import DeleteTask from './components/DeleteTask.tsx';
 import EditProject from './components/EditProject.tsx';
 import EditTask from './components/EditTask.tsx';
-import ViewProject from './components/ViewProject.tsx';
-import ViewTask from './components/ViewTask.tsx';
+// import ViewProject from './components/ViewProject.tsx';
+// import ViewTask from './components/ViewTask.tsx';
 
 const App = () => {
   return (
@@ -21,10 +21,6 @@ const App = () => {
     <Route path='/deleteProject/:projectId' element={<DeleteProject />}></Route>
     <Route path='/putTask/:projectId/:taskId' element={<EditTask />}></Route>
     <Route path='/putProject/:projectId' element={<EditProject />}></Route>
-    {/* <Route path='/books/create' element={<CreateBook />} />
-    <Route path='/books/details/:id' element={<ShowBook />} />
-    <Route path='/books/edit/:id' element={<EditBook />} />
-    <Route path='/books/delete/:id' element={<DeleteBook />} />  */}
   </Routes>
   )
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import BackButton from './BackButton.jsx';
 import Loading from './Loading.jsx';
 import {useNavigate,useParams} from 'react-router-dom';
-import {useSnackbar} from 'notistack';
+//import {useSnackbar} from 'notistack';
 import {url} from '../config.ts';
 
 const DeleteProject = () => {
@@ -39,7 +39,6 @@ const DeleteProject = () => {
     }
   }
 
-  //  const response = axios.get(`${url}deleteProject/${projectId}`)
   return (
     <div className="p-4 text-center">
       <BackButton />

@@ -1,10 +1,10 @@
-import {useEffect,useState} from 'react'
+import {useState} from 'react'
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import BackButton from './BackButton.tsx';
 import Loading from './Loading.jsx';
 import {url} from '../config.ts';
-import {useSnackbar} from 'notistack';
+// import {useSnackbar} from 'notistack';
 
 const CreateProject = () => {
     const [title, setTitle] = useState("");

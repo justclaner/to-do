@@ -4,7 +4,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import BackButton from './BackButton.tsx';
 import Loading from './Loading.jsx';
 import {url} from '../config.ts';
-import {useSnackbar} from 'notistack';
+//import {useSnackbar} from 'notistack';
 
 const EditProject = () => {
   const [title, setTitle] = useState("");
