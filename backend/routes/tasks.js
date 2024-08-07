@@ -132,9 +132,20 @@ router.delete('/deleteProject/:projectId', async (req,res)=> {
         const deleteProject = await Project.findByIdAndDelete(projectId);
         const deleteTasks = await Task.deleteMany({projectId:projectId});
         if(!deleteProject) {return res.status(404).json({success:false,message: "Project not found"});}
-        if (!deleteTasks) {return res.status(404).json({success:false,message: "Task not found"});}
+        if (!deleteTasks) {return res.status(404).json({success:false,message: "Tasks not found"});}
         return res.status(200).json("Project deleted sucessfully");
     } catch(error) {
+        console.error(error);
+        res.status(500).json({success:false,message:error.message});
+    }
+})
+
+router.delete('/deleteAll', async (req,res) => {
+    try {
+        const deleteTasks = await Task.deleteMany({});
+        const deleteProjects = await Project.deleteMany({});
+        return res.status(200).json("Deleted everything successfully.");
+    } catch (error) {
         console.error(error);
         res.status(500).json({success:false,message:error.message});
     }

@@ -53,7 +53,7 @@ const EditTask = () => {
         date: date,
         projectId: projectId
       }
-      await axios.post(`${url}createTask`,data);
+      await axios.put(`${url}putTask/${taskId}`,data);
       setLoading(false);
       navigate('/');
     } catch(e) {

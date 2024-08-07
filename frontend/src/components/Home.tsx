@@ -58,6 +58,7 @@ const Home = () => {
                
                 </div> } 
                 <Link to='/createProject'><button className='border-2 border-black p-1 w-[20%] mt-6 mb-2 rounded-lg hover:shadow-xl'>Add Project</button></Link>
+                <Link to='/deleteAll'><button className='border-2 border-black p-1 w-[20%] mt-6 mb-2 ml-2 rounded-lg hover:shadow-xl'>Delete Everything</button></Link>
     </div>
   )
 }
