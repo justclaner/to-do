@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import BackButton from './BackButton.tsx';
 import Loading from './Loading.jsx';
+import {url} from '../config.ts';
 import {useSnackbar} from 'notistack';
 
 const CreateProject = () => {
@@ -13,7 +14,7 @@ const CreateProject = () => {
         try {
             const data = {title:title};
             setLoading(true);
-            const response = await axios.post("http://localhost:5000/tasks/createProject",data);
+            await axios.post(`${url}createProject`,data);
             setLoading(false);
             navigate('/')
 

@@ -17,6 +17,8 @@ const App = () => {
     <Route path='/' element={<Home />} />
     <Route path='/createProject' element={<CreateProject />} />
     <Route path='/createTask/:projectId' element={<CreateTask />} />
+    <Route path='/deleteTask/:taskId' element={<DeleteTask />}></Route>
+    <Route path='/deleteProject/:projectId' element={<DeleteProject />}></Route>
     {/* <Route path='/books/create' element={<CreateBook />} />
     <Route path='/books/details/:id' element={<ShowBook />} />
     <Route path='/books/edit/:id' element={<EditBook />} />

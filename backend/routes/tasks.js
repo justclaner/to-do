@@ -130,7 +130,7 @@ router.delete('/deleteProject/:projectId', async (req,res)=> {
     try {
         const {projectId} = req.params;
         const deleteProject = await Project.findByIdAndDelete(projectId);
-        const deleteTasks = await Task.findOneAndDelete({projectId:projectId});
+        const deleteTasks = await Task.deleteMany({projectId:projectId});
         if(!deleteProject) {return res.status(404).json({success:false,message: "Project not found"});}
         if (!deleteTasks) {return res.status(404).json({success:false,message: "Task not found"});}
         return res.status(200).json("Project deleted sucessfully");

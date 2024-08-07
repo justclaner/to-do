@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
 import BackButton from './BackButton.tsx';
 import Loading from './Loading.jsx';
+import {url} from '../config.ts';
 
 const CreateTask = () => {
   const [title, setTitle] = useState("");
@@ -17,7 +18,7 @@ const CreateTask = () => {
     const getProject = async() => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/tasks/${projectId}/0`);
+        const response = await axios.get(`${url}${projectId}/0`);
         setProjectTitle(response.data.project.title);
         setLoading(false);
       } catch(e) {
@@ -37,7 +38,7 @@ const CreateTask = () => {
         date: date,
         projectId: projectId
       }
-      const response = await axios.post("http://localhost:5000/tasks/createTask",data);
+      await axios.post("http://localhost:5000/tasks/createTask",data);
       setLoading(false);
       navigate('/');
     } catch(e) {

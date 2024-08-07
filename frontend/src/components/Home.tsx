@@ -3,6 +3,7 @@ import axios from 'axios';
 import Loading from './Loading.tsx';
 import {MdOutlineAddBox,MdOutlineDelete} from 'react-icons/md';
 import {Link} from 'react-router-dom';
+import {url} from '../config.ts';
 
 const Home = () => {
     const [projects, setProjects] = useState<any[]>([]);
@@ -12,7 +13,7 @@ const Home = () => {
         async function fetchProjectsAndTasks() {
             try {
             setLoading(true);
-            const response = await axios.get('http://localhost:5000/tasks');
+            const response = await axios.get(url);
             setProjects(response.data.projects);
             setTasks(response.data.tasks);
             setLoading(false);
@@ -37,17 +38,17 @@ const Home = () => {
                         <div className="flex flex-wrap items-center justify-start">
                             <h1 className='text-2xl'>{project.title}</h1>
                             <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Edit Title</button>
-                            <button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Delete Project</button>
+                            <Link to={`/deleteProject/${project._id}`}><button className='border-2 border-black mt-2 p-1 ml-3 px-2 rounded-lg hover:shadow-xl'>Delete Project</button></Link>
                         </div>
                         
                         {tasks.map(task=>{if(task.projectId == project._id) {
                             return <div className='border-2 border-black px-4 py-2 my-4 rounded-lg' key={task._id}> 
-                                <h2 className='text-xl font-bold'>{`Task: ${task.title}`}</h2>
+                                <h2 className='text-xl font-bold'>{task.title}</h2>
                                 <h3 className="text-lg">{task.description}</h3>
                                 <h3 className="text-lg font-semibold">{task.date}</h3>
                                 <div className="flex justify-evenly w-full mt-6 mb-2">
                                 <button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Edit Task</button>
-                                <button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Delete Task</button>
+                                <Link to={`/deleteTask/${task._id}`}><button className='border-2 border-black p-1 px-2 rounded-lg hover:shadow-xl'>Delete Task</button></Link>
                                 </div>
                                 </div>
                         }}
