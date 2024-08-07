@@ -53,11 +53,12 @@ router.put('/:taskId', async (req,res)=> {
 
 router.post('/createTask', async (req,res) => {
     try {
-        const {title, description, date, projectId} = req.body;
+        const {title, description, date, color, projectId} = req.body;
         if (!title) {return res.status(400).json({success:false,message:"Please provide a required title for the task."});}
         const newTask = {title:title};
         if (description) {newTask.description = description;}
         if (date) {newTask.date = date;}
+        if (color) {newTask.color = color;}
         if (projectId && await Project.exists({_id:new mongoose.Types.ObjectId(projectId)})) {newTask.projectId = projectId;}
         const task = await Task.create(newTask);
         return res.status(201).json(task);
@@ -70,9 +71,10 @@ router.post('/createTask', async (req,res) => {
 
 router.post('/createProject', async (req,res) => {
     try {
-        const {title} = req.body;
+        const {title, color} = req.body;
         if (!title) {return res.status(400).json({success:false,message:"Please provide a required title for the project."});}
-        const newProject = {title:title};
+        const newProject = { title:title};
+        if (color) {newProject.color = color;}
 
         const project = await Project.create(newProject);
         return res.status(201).json(project);
@@ -86,7 +88,7 @@ router.post('/createProject', async (req,res) => {
 router.put('/putTask/:taskId', async (req,res)=> {
     try {
         const {taskId} = req.params;
-        const {title, description, date, projectId} = req.body;
+        const {title, description, date, color, projectId} = req.body;
         if (!title) {return res.status(404).json({success:false,message:"Please provide a required title for the task."})}
         if(!await Project.exists({_id:new mongoose.Types.ObjectId(projectId)})) {return res.status(404).json({success:false,message:"Project with this id does not exist"})}
 
@@ -102,7 +104,7 @@ router.put('/putTask/:taskId', async (req,res)=> {
 router.put('/putProject/:projectId', async (req,res)=> {
     try {
         const {projectId} = req.params;
-        const {title} = req.body;
+        const {title,color} = req.body;
         if (!title) {return res.status(404).json({success:false,message:"Please provide a required title for the project."})}
 
         const result = await Project.findByIdAndUpdate(projectId, req.body);

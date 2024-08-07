@@ -5,6 +5,10 @@ const projectSchema = mongoose.Schema(
         title: {
             type: String,
             required: true
+        },
+        color: {
+            type: String,
+            required: false
         }
     },
     {

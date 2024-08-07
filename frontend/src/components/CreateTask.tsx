@@ -9,6 +9,7 @@ const CreateTask = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
+  const [color, setColor] = useState("#7dd3fc");
   const {projectId} = useParams();
   const [projectTitle, setProjectTitle] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,7 @@ const CreateTask = () => {
         title:title,
         description:description,
         date: date,
+        color:color,
         projectId: projectId
       }
       await axios.post(`${url}createTask`,data);
@@ -64,10 +66,12 @@ const CreateTask = () => {
             <input type="text" className="border-2 border-gray-500 w-full px-4 py-2" defaultValue={date} onChange={e=>setDate(e.target.value)}/>
         </div>
         <div className="my-4">
+            <label className='text-xl text-gray-500'>Color:</label>
+            <input type="color" className="border-2 border-gray-500 w-full px-1 h-[44px]" defaultValue={color} onChange={e=>setColor(e.target.value)}/>
+        </div>
+        <div className="my-4">
             <h3 className="text-xl text-gray-500">Project:</h3>
             <h3 className="text-lg text-black">{projectTitle}</h3>
-            {/* <label className='text-xl text-gray-500'>Project Id:</label>
-            <input type="text" className="border-2 border-gray-500 w-full px-4 py-2" value={projectId}/> */}
         </div>
         <button className="border-2 border-black mx-auto mb-2 px-2 py-1 rounded-lg" onClick={postTask}>Create Task</button>
         </div>

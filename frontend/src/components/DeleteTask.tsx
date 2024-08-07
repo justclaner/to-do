@@ -45,7 +45,7 @@ const DeleteTask = () => {
       {loading ? <Loading/> : 
       <div className="p-4">
         <h1 className="text-xl text-black">{`Are you sure you want to delete task ${title}?`}</h1>
-        <button className="block mx-auto my-2 border-2 border-red-500 rounded-lg px-2 py-1 hover:shadow-xl" onClick={deleteTask}>DELETE</button>
+        <button className="block mx-auto my-2 border-2 border-red-500 bg-red-300 rounded-lg px-2 py-1 hover:shadow-xl" onClick={deleteTask}>DELETE TASK</button>
       </div>
       }
     </div>

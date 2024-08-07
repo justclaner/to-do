@@ -14,6 +14,10 @@ const taskSchema = mongoose.Schema(
             type: String,
             required: false
         },
+        color: {
+            type: String,
+            required: false
+        },
         projectId: {
             type: String,
             required: false
