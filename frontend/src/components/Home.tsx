@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import axios from 'axios';
 import Loading from './Loading.tsx';
 //import {MdOutlineAddBox,MdOutlineDelete} from 'react-icons/md';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {url} from '../config.ts';
 import Card from './Card.tsx';
 
@@ -11,6 +11,7 @@ const Home = () => {
     const [tasks, setTasks] = useState<any[]>([]);
     const initialBodyColor = localStorage.getItem("bodyColor");
     const initialAppColor = localStorage.getItem("appColor");
+    const navigate = useNavigate();
     
     const [bodyColor, setBodyColor] = useState((!initialBodyColor)?"#fca5a5":initialBodyColor);
     const [appColor, setAppColor] = useState((!initialAppColor)?"#0284c7":initialAppColor);
@@ -42,6 +43,18 @@ const Home = () => {
         localStorage.setItem("appColor",appColor);
     },[bodyColor,appColor])
 
+    const addDefault = async () => {
+        try {
+            setLoading(true);
+            await axios.post(`${url}createDefault`);
+            setLoading(false);
+            window.location.reload();
+        } catch(e) {
+            setLoading(false);
+            console.error(e);
+        }
+    }
+
   return (
     <div className="p-4">
 
@@ -60,6 +73,7 @@ const Home = () => {
 
                 </div> } 
                 <Link to='/createProject'><button className='border-2 border-black py-1 px-2 w-fit mt-6 mb-2 rounded-lg hover:shadow-xl'>Add Project</button></Link>
+                <button className='border-2 border-black py-1 px-2 w-fit mt-6 mb-2 ml-3 rounded-lg hover:shadow-xl' onClick={addDefault}>Add Sample</button>
                 <Link to='/deleteAll'><button className='border-2 border-black py-1 px-2 w-fit mt-6 mb-2 ml-3 rounded-lg hover:shadow-xl'>Delete Everything</button></Link>
                 <div className="my-4">
                 <label className='text-xl text-black font-semibold'>Background Color:</label>
