@@ -28,4 +28,4 @@ Please note that there is no user login system and the data for tasks and projec
 
 # Getting Started
 
-Head over to [insert link here]() to view the app.
+Head over to [to-do-client-teal.vercel.app/](https://to-do-client-teal.vercel.app/) to view the app.
