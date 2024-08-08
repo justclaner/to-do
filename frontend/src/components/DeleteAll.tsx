@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import BackButton from './BackButton.jsx';
 import Loading from './Loading.jsx';
-import {useNavigate,useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {url} from '../config.ts';
 
 const DeleteAll = () => {
