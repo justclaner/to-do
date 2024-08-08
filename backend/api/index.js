@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT;
 const uri = process.env.MONGO_URI;
 
-app.use(auth);
+
 app.use(express.json());
 app.use(cors({
     origin: '*',
@@ -17,6 +17,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
     credentials: true,
 }));
+app.use(auth);
 
 app.use('/tasks',tasksRouter);
 
