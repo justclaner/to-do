@@ -8,8 +8,6 @@ import DeleteTask from './components/DeleteTask.tsx';
 import DeleteAll from './components/DeleteAll.tsx';
 import EditProject from './components/EditProject.tsx';
 import EditTask from './components/EditTask.tsx';
-// import ViewProject from './components/ViewProject.tsx';
-// import ViewTask from './components/ViewTask.tsx';
 
 const App = () => {
   return (
