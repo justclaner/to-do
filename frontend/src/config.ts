@@ -1,1 +1,1 @@
-export const url : string = "http://localhost:5000/tasks/"
+export const url : string = "https://to-do-server-beta.vercel.app/tasks"
