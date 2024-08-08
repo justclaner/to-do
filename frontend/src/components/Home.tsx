@@ -8,8 +8,12 @@ import {url} from '../config.ts';
 const Home = () => {
     const [projects, setProjects] = useState<any[]>([]);
     const [tasks, setTasks] = useState<any[]>([]);
-    const [bodyColor, setBodyColor] = useState("#fca5a5");
-    const [appColor, setAppColor] = useState("#0284c7");
+    const initialBodyColor = localStorage.getItem("bodyColor");
+    const initialAppColor = localStorage.getItem("appColor");
+    console.log(initialBodyColor,initialAppColor);
+    
+    const [bodyColor, setBodyColor] = useState((!initialBodyColor)?"#fca5a5":initialBodyColor);
+    const [appColor, setAppColor] = useState((!initialAppColor)?"#0284c7":initialAppColor);
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
         document.body.style.backgroundColor = bodyColor;
@@ -34,11 +38,16 @@ const Home = () => {
         document.body.style.backgroundColor = bodyColor;
     }, [bodyColor])
 
+    useEffect(()=>{
+        localStorage.setItem("bodyColor",bodyColor);
+        localStorage.setItem("appColor",appColor);
+    },[bodyColor,appColor])
+
     const getLuma = (hex:string) : number => {
         const r = parseInt(hex.slice(1,3),16);
         const g = parseInt(hex.slice(3,5),16);
         const b = parseInt(hex.slice(5,7),16);
-        const luma = 0.299*r + 0.587*g + 0.114*b;
+        const luma = 0.299*r + 0.587*g + 0.114*b; //constant coefficients must add up to 1
         return luma;
     }
 
