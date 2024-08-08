@@ -17,7 +17,6 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
         document.body.style.backgroundColor = bodyColor;
-        console.log(getLuma('#f0fdf4'));
         async function fetchProjectsAndTasks() {
             try {
             setLoading(true);
@@ -43,14 +42,6 @@ const Home = () => {
         localStorage.setItem("appColor",appColor);
     },[bodyColor,appColor])
 
-    const getLuma = (hex:string) : number => {
-        const r = parseInt(hex.slice(1,3),16);
-        const g = parseInt(hex.slice(3,5),16);
-        const b = parseInt(hex.slice(5,7),16);
-        const luma = 0.299*r + 0.587*g + 0.114*b; //constant coefficients must add up to 1
-        return luma;
-    }
-
   return (
     <div className="p-4">
 
@@ -59,10 +50,7 @@ const Home = () => {
             </div>
             {loading ? <Loading /> : <div className='border-2 border-black rounded-lg w-full' style={{backgroundColor:`${appColor}`}}>
                 <div className="flex flex-wrap justify-evenly">
-                    {projects.map(project=>{ 
-                        return <Card project={project} tasks={tasks}/>
-                        }
-                    )}
+                    {projects.map(project=><Card project={project} tasks={tasks}/>)}
                 </div>
                
                 <div className="m-4">

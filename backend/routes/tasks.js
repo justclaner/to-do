@@ -33,24 +33,6 @@ router.get('/:projectId?/:taskId?',async (req,res)=>{
   }
 });
 
-router.put('/:projectId', async (req,res)=> {
-    try {
-
-    } catch(error) {
-    console.error(error);
-    res.status(500).send({success:false,message:error.message})
-  }
-})
-
-router.put('/:taskId', async (req,res)=> {
-    try {
-
-    } catch(error) {
-    console.error(error);
-    res.status(500).send({success:false,message:error.message})
-  }
-})
-
 router.post('/createTask', async (req,res) => {
     try {
         const {title, description, date, color, projectId} = req.body;
@@ -61,6 +43,7 @@ router.post('/createTask', async (req,res) => {
         if (color) {newTask.color = color;}
         if (projectId && await Project.exists({_id:new mongoose.Types.ObjectId(projectId)})) {newTask.projectId = projectId;}
         const task = await Task.create(newTask);
+        if (!task) {return res.status(500).json({success:false,message:"Something went wrong when connecting with the MongoDB database."})};
         return res.status(201).json(task);
 
     } catch(error) {
@@ -77,8 +60,33 @@ router.post('/createProject', async (req,res) => {
         if (color) {newProject.color = color;}
 
         const project = await Project.create(newProject);
+        if (!project) {return res.status(500).json({success:false,message:"Something went wrong when connecting with the MongoDB database."})};
         return res.status(201).json(project);
 
+    } catch(error) {
+        console.error(error);
+        res.status(500).json({success:false,message:error.message});
+    }
+})
+
+router.post('/createDefault', async(req,res)=>{
+    try {
+        const defaultProject = {
+            title:"Sample Project",
+            color:"#38bdf8"
+        }
+        const project = await Project.create(defaultProject);
+        if (!project) {return res.status(500).json({success:false,message:"Something went wrong when connecting with the MongoDB database."})};
+        const defaultTask = {
+            title:"Sample Task",
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            date:"Sample Date",
+            color:"#7dd3fc",
+            projectId:project._id
+        }
+        const task = await Task.create(defaultTask);
+        if (!task) {return res.status(500).json({success:false,message:"Something went wrong when connecting with the MongoDB database."})};
+        res.status(200).json(project);
     } catch(error) {
         console.error(error);
         res.status(500).json({success:false,message:error.message});
