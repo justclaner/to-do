@@ -6,6 +6,26 @@ adapt accordingly. You are not able to drag around projects and tasks.
 
 Please note that there is no user login system and the data for tasks and projects are stored in one MongoDB database, so changes to tasks/projects made by anybody will be seen by any users who view the site.
 
-#Built With
+# Built With
 
-- [![React][React.js]][React-url]
+## Frameworks
+
+- MongoDB
+- Express
+- React
+- Node.js
+
+## Dependencies/Tools
+
+- axios
+- cors
+- dotenv
+- mongoose
+- nodemon
+- react-dom
+- react-router-dom
+- vite
+
+# Getting Started
+
+Head over to [insert link here]() to view the app.
