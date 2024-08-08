@@ -3,11 +3,13 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import 'dotenv/config';
 import tasksRouter from '../routes/tasks.js';
+import auth from '../auth.js';
 
 const app = express();
 const port = process.env.PORT;
 const uri = process.env.MONGO_URI;
 
+app.use(auth);
 app.use(express.json());
 app.use(cors({
     origin: '*',
